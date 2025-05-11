@@ -11,10 +11,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 
-@Composable
 // TODO: Migrate to components and inject dependencies
+@Composable
 fun MainScreen(viewModel: MainScreenViewModel) {
-
     val state by viewModel.state.collectAsState()
     val tabs = listOf("Main", "Settings")
 

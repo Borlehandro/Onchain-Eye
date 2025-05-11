@@ -10,3 +10,20 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.androidKotlinMultiplatformLibrary) apply false
 }
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+
+        filter {
+            exclude { element ->
+                val path = element.file.path
+                path.contains("\\generated\\") ||
+                    path.contains("/generated/") ||
+                    path.contains("/main.kt")
+            }
+        }
+    }
+}
